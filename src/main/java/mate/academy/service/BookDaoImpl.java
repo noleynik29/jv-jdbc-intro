@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import mate.academy.entity.Book;
 import mate.academy.lib.Dao;
 import mate.academy.repository.BookDao;
@@ -18,16 +19,11 @@ public class BookDaoImpl implements BookDao {
     private static final String URL = "jdbc:mysql://localhost:3306/books";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
-    private static final String INSERT_QUERY =
-            "INSERT INTO book (title, price) VALUES (?, ?)";
-    private static final String SELECT_BY_ID_QUERY =
-            "SELECT id, title, price FROM book WHERE id = ?";
-    private static final String SELECT_ALL_QUERY =
-            "SELECT id, title, price FROM book";
-    private static final String UPDATE_QUERY =
-            "UPDATE book SET title = ?, price = ? WHERE id = ?";
-    private static final String DELETE_QUERY =
-            "DELETE FROM book WHERE id = ?";
+    private static final String INSERT_QUERY = "INSERT INTO book (title, price) VALUES (?, ?)";
+    private static final String SELECT_BY_ID_QUERY = "SELECT id, title, price FROM book WHERE id = ?";
+    private static final String SELECT_ALL_QUERY = "SELECT id, title, price FROM book";
+    private static final String UPDATE_QUERY = "UPDATE book SET title = ?, price = ? WHERE id = ?";
+    private static final String DELETE_QUERY = "DELETE FROM book WHERE id = ?";
 
     private final Connection connection;
 
@@ -41,8 +37,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public Book create(Book book) {
-        try (PreparedStatement stmt = connection.prepareStatement(
-                INSERT_QUERY, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement stmt = connection.prepareStatement(INSERT_QUERY, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, book.getTitle());
             stmt.setBigDecimal(2, book.getPrice());
