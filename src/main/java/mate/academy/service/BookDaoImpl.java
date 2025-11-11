@@ -81,17 +81,15 @@ public class BookDaoImpl implements BookDao {
     @Override
     public List<Book> findAll() {
         List<Book> books = new ArrayList<>();
-           try (PreparedStatement stmt = connection.prepareStatement(SELECT_ALL_QUERY);
+        try (PreparedStatement stmt = connection.prepareStatement(SELECT_ALL_QUERY);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 books.add(mapBook(rs));
             }
-
         } catch (SQLException e) {
             throw new RuntimeException("Can't get all books", e);
         }
-
         return books;
     }
 
