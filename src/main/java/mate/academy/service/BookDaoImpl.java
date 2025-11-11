@@ -17,15 +17,15 @@ import mate.academy.util.ConnectionUtil;
 @Dao
 public class BookDaoImpl implements BookDao {
     private static final String INSERT_QUERY =
-            "INSERT INTO book (title, price) VALUES (?, ?)";
+            "INSERT INTO books (title, price) VALUES (?, ?)";
     private static final String SELECT_BY_ID_QUERY =
-            "SELECT id, title, price FROM book WHERE id = ?";
+            "SELECT id, title, price FROM books WHERE id = ?";
     private static final String SELECT_ALL_QUERY =
-            "SELECT id, title, price FROM book";
+            "SELECT id, title, price FROM books";
     private static final String UPDATE_QUERY =
-            "UPDATE book SET title = ?, price = ? WHERE id = ?";
+            "UPDATE books SET title = ?, price = ? WHERE id = ?";
     private static final String DELETE_QUERY =
-            "DELETE FROM book WHERE id = ?";
+            "DELETE FROM books WHERE id = ?";
 
     public BookDaoImpl() {
 
